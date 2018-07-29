@@ -1,4 +1,6 @@
 import requests
+from flask import Flask, render_template, jsonify
+app = Flask(__name__)
 
 
 def fetch_song(song_id):
@@ -15,6 +17,7 @@ def fetch_song(song_id):
 
     return song
 
+
 def fetch_media(song):
     """Given a JSON blob from Genius, return the 'media' attribute.
 
@@ -24,6 +27,7 @@ def fetch_media(song):
         List of media services to listen to the song.
     """
     return song.get('media')
+
 
 def fetch_metadata(song):
     """Given a JSON blob from Genius, return a dict of song metadata.
@@ -47,6 +51,7 @@ def fetch_metadata(song):
 
     return metadata
 
+
 def fetch_search_results(q):
     """Searches Genius.com for the given term.
 
@@ -66,5 +71,17 @@ def fetch_search_results(q):
 
     return results
 
+@app.route('/')
+def home():
+    return render_template('index.html.j2')
 
+@app.route('/search/<q>')
 def search(q):
+    return jsonify(fetch_search_results(q))
+
+@app.route('/<id>')
+def result(id):
+    song = fetch_song(id)
+    media = fetch_media(song)
+    metadata = fetch_metadata(song)
+    return jsonify({'media': media, 'metadata': metadata})
