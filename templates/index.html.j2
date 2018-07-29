@@ -9,8 +9,8 @@
     <div class="row align-items-center" align="center">
       <div class="col w-75">
         <h1><b>MUSIC</b></h1>
-        <form>
-          <input class="form-control form-control-lg" style="max-width: 450px; margin: 30px 0 30px 0;" type="text">
+        <form action="{{ url_for('search') }}" method="post">
+          <input class="form-control form-control-lg" style="max-width: 450px; margin: 30px 0 30px 0;" type="text" name="search-form">
           <button type="submit" class="btn btn-primary" style="width: 125px; font-weight: bold">Search</button>
         </form>
       </div>

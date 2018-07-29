@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
 
@@ -75,8 +75,9 @@ def fetch_search_results(q):
 def home():
     return render_template('index.html.j2')
 
-@app.route('/search/<q>')
-def search(q):
+@app.route('/search/', methods=['POST', 'GET'])
+def search():
+    q = request.form.get('search-form')
     return jsonify(fetch_search_results(q))
 
 @app.route('/<id>')
