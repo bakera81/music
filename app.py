@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, jsonify, request
+import pdb
 app = Flask(__name__)
 
 
@@ -75,12 +76,13 @@ def fetch_search_results(q):
 def home():
     return render_template('index.html.j2')
 
-@app.route('/search/', methods=['POST', 'GET'])
+@app.route('/search/', methods=['GET'])
 def search():
-    q = request.form.get('search-form')
+    # TODO: are args being formatted correctly for genius?
+    q = request.args.get('q')
     return jsonify(fetch_search_results(q))
 
-@app.route('/<id>')
+@app.route('/songs/<id>')
 def result(id):
     song = fetch_song(id)
     media = fetch_media(song)
