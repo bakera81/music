@@ -1,8 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% include 'partials/head.html.j2' %}
+  <title>Search and Share Songs Links</title>
 </head>
 <body>
-  <h1>Hellow</h1>
+  <div class="container-fluid" style="height: 100%">
+    <div class="row align-items-center" align="center">
+      <div class="col w-75">
+        <h1><b>MUSIC</b></h1>
+        <form>
+          <input class="form-control form-control-lg" style="max-width: 450px; margin: 30px 0 30px 0;" type="text">
+          <button type="submit" class="btn btn-primary" style="width: 125px; font-weight: bold">Search</button>
+        </form>
+      </div>
+    </div>
+    {#
+    <div class="row" align="center">
+      <div class="col">
+        <form>
+          <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+    </div>
+    #}
+  </div>
+  {% include 'partials/js_includes.html.j2' %}
 </body>
 </html>
