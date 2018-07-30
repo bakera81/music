@@ -10,7 +10,7 @@
       <div class="col w-75">
         <h1>{{ metadata.title_with_featured }}</h1>
         <h3>{{ metadata.artist | upper }}</h3>
-        <img src="{{ metadata.song_art_image_url }}" width="400px;" style="margin: 30px 0 30px 0;"/>
+        <img src="{{ metadata.song_art_image_url }}" width="100%" style="margin: 30px 0 30px 0; max-width: 400px;"/>
         <h3>Listen On:</h3>
         {% for m in media %}
         <p><a href="{{ m.url }}">{{ m.provider | upper }}</a></p>
