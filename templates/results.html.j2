@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'partials/head.html.j2' %}
+  <title>Search and Share Songs Links</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row" align="center">
+      <div class="col">
+        <h1><b>RESULTS</b></h1>
+      </div>
+    </div>
+    {% for r in results %}
+    <div class="row">
+      <div class="col clickable-col" onclick="location.href='{{ url_for('result', id=r.id) }}'">
+        <p>
+          {{ r.title_with_featured }}<br>
+          {{ r.artist | upper }}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% include 'partials/js_includes.html.j2' %}
+</body>
+</html>

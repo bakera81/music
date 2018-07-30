@@ -1,0 +1,11 @@
+* {
+  font-family: 'Cutive Mono', monospace;
+}
+
+.clickable-col {
+  cursor: pointer;
+}
+
+.clickable-col:hover {
+  background-color: #efefef;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'partials/head.html.j2' %}
+  <title>Search and Share Songs Links</title>
+</head>
+<body>
+  <div class="container-fluid" style="height: 100%">
+    <div class="row align-items-center" align="center">
+      <div class="col w-75">
+        <h1>{{ metadata.title_with_featured }}</h1>
+        <h3>{{ metadata.artist | upper }}</h3>
+        <img src="{{ metadata.song_art_image_url }}" width="400px;" style="margin: 30px 0 30px 0;"/>
+        <h3>Listen On:</h3>
+        {% for m in media %}
+        <p><a href="{{ m.url }}">{{ m.provider | upper }}</a></p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% include 'partials/js_includes.html.j2' %}
+</body>
+</html>
