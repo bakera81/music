@@ -80,7 +80,6 @@ def home():
 def search():
     # TODO: are args being formatted correctly for genius?
     q = request.args.get('q')
-    # return jsonify(fetch_search_results(q))
     return render_template('results.html.j2', results=fetch_search_results(q))
 
 @app.route('/songs/<id>')
@@ -88,4 +87,5 @@ def result(id):
     song = fetch_song(id)
     media = fetch_media(song)
     metadata = fetch_metadata(song)
-    return jsonify({'media': media, 'metadata': metadata})
+    # return jsonify({'media': media, 'metadata': metadata})
+    return render_template('song.html.j2', media=media, metadata=metadata)
