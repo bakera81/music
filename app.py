@@ -1,6 +1,5 @@
 import requests
 from flask import Flask, render_template, jsonify, request
-import pdb
 app = Flask(__name__)
 
 
@@ -87,5 +86,4 @@ def result(id):
     song = fetch_song(id)
     media = fetch_media(song)
     metadata = fetch_metadata(song)
-    # return jsonify({'media': media, 'metadata': metadata})
     return render_template('song.html.j2', media=media, metadata=metadata)
